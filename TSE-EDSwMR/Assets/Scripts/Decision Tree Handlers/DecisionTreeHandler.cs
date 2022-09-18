@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 using Microsoft.MixedReality.Toolkit.UI;
+using Microsoft.MixedReality.Toolkit;
 
 /// <summary>
 /// The DecisionTreeHandler is a key class for managing the behaviour of the Decision Tree.
@@ -21,6 +22,11 @@ public class DecisionTreeHandler : MonoBehaviour
     public GameObject button_prefab; //"placed correctly" button
     public GameObject frame_prefab; //Node represented as frame
     public GameObject continue_button_prefab;
+    //Profiles to de-activate spatial awareness
+    [SerializeField]
+    private MixedRealityToolkitConfigurationProfile DeactivatedSpatialAwarenessProfile;
+    [SerializeField]
+    private MixedRealityToolkitConfigurationProfile ActivatedSpatialAwarenessProfile;
 
 
     protected GameObject place_button;
@@ -71,7 +77,8 @@ public class DecisionTreeHandler : MonoBehaviour
     {
         gameObject.transform.GetComponentInParent<Microsoft.MixedReality.Toolkit.Utilities.Solvers.SolverHandler>().enabled = false;
         place_button.SetActive(false);
-
+        //TODO Testing for energy optimization(see also at EnableFollowing)
+        MixedRealityToolkit.Instance.ActiveProfile = DeactivatedSpatialAwarenessProfile;
     }
 
     /// <summary>
@@ -121,7 +128,8 @@ public class DecisionTreeHandler : MonoBehaviour
         gameObject.transform.GetComponentInParent<Microsoft.MixedReality.Toolkit.Utilities.Solvers.SolverHandler>().enabled = true;
         place_button.SetActive(true);
         if (info_box != null) info_box.SetActive(true);
-
+        //TODO Testing
+        MixedRealityToolkit.Instance.ActiveProfile = ActivatedSpatialAwarenessProfile;
         return place_button.GetComponent<PressableButtonHoloLens2>().ButtonPressed;
     }
 
