@@ -250,7 +250,8 @@ PrefabInstance:
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: OnboardingIntro, Assembly-CSharp
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3783730151257798916, guid: 9c52639faf9f52a4cad6931d3aa2b4a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9c52639faf9f52a4cad6931d3aa2b4a7, type: 3}
 --- !u!4 &22423096 stripped
 Transform:
@@ -275,6 +276,7 @@ GameObject:
   - component: {fileID: 56465021}
   - component: {fileID: 56465020}
   - component: {fileID: 56465019}
+  - component: {fileID: 56465018}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -296,6 +298,29 @@ Transform:
   m_Father: {fileID: 324372222}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &56465018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56465016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf98dd1206224111a38765365e98e207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockCursorWhenFocusLocked: 1
+  setCursorInvisibleWhenFocusLocked: 0
+  maxGazeCollisionDistance: 10
+  raycastLayerMasks:
+  - serializedVersion: 2
+    m_Bits: 4294967291
+  stabilizer:
+    storedStabilitySamples: 60
+  gazeTransform: {fileID: 0}
+  minHeadVelocityThreshold: 0.5
+  maxHeadVelocityThreshold: 2
 --- !u!114 &56465019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,7 +588,8 @@ PrefabInstance:
       propertyPath: iconQuadTexture
       value: 
       objectReference: {fileID: 2800000, guid: d74cdc58c5d172a469ea5ca987eb17f6, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3783730151257798916, guid: 9c52639faf9f52a4cad6931d3aa2b4a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9c52639faf9f52a4cad6931d3aa2b4a7, type: 3}
 --- !u!4 &158592758 stripped
 Transform:
@@ -661,7 +687,8 @@ PrefabInstance:
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: OnboardingIntro, Assembly-CSharp
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1515472738762023832, guid: 2371efdfff985324c8374aac79e85552, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2371efdfff985324c8374aac79e85552, type: 3}
 --- !u!4 &242571274 stripped
 Transform:
@@ -863,7 +890,6 @@ GameObject:
   m_Component:
   - component: {fileID: 401095341}
   - component: {fileID: 401095345}
-  - component: {fileID: 401095344}
   - component: {fileID: 401095343}
   m_Layer: 0
   m_Name: QuestionText
@@ -985,14 +1011,6 @@ MonoBehaviour:
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
---- !u!222 &401095344
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401095340}
-  m_CullTransparentMesh: 0
 --- !u!23 &401095345
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1267,7 +1285,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1019988128}
   - component: {fileID: 1019988131}
-  - component: {fileID: 1019988130}
   - component: {fileID: 1019988129}
   m_Layer: 0
   m_Name: Menu
@@ -1387,14 +1404,6 @@ MonoBehaviour:
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
---- !u!222 &1019988130
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019988127}
-  m_CullTransparentMesh: 0
 --- !u!23 &1019988131
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1992,7 +2001,10 @@ PrefabInstance:
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: OnboardingOutro, Assembly-CSharp
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2697356441325402011, guid: 68f4d65797d6a374ea0ea4213ba8db5a, type: 3}
+    - {fileID: 2697356441588350798, guid: 68f4d65797d6a374ea0ea4213ba8db5a, type: 3}
+    - {fileID: 2697356441010992938, guid: 68f4d65797d6a374ea0ea4213ba8db5a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 68f4d65797d6a374ea0ea4213ba8db5a, type: 3}
 --- !u!1 &1738412161 stripped
 GameObject:
@@ -2242,7 +2254,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2017151324}
   - component: {fileID: 2017151327}
-  - component: {fileID: 2017151326}
   - component: {fileID: 2017151325}
   m_Layer: 0
   m_Name: Replace
@@ -2365,14 +2376,6 @@ MonoBehaviour:
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
---- !u!222 &2017151326
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2017151323}
-  m_CullTransparentMesh: 0
 --- !u!23 &2017151327
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2461,7 +2464,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2135296770}
   - component: {fileID: 2135296773}
-  - component: {fileID: 2135296772}
   - component: {fileID: 2135296771}
   m_Layer: 0
   m_Name: Hint
@@ -2582,14 +2584,6 @@ MonoBehaviour:
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
---- !u!222 &2135296772
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2135296769}
-  m_CullTransparentMesh: 0
 --- !u!23 &2135296773
 MeshRenderer:
   m_ObjectHideFlags: 0

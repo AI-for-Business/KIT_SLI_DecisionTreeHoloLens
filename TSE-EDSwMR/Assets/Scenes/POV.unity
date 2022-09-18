@@ -642,7 +642,15 @@ PrefabInstance:
       propertyPath: m_Positions.Array.data[1].z
       value: 2.938511
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2704916803158510636, guid: fecdf261cf0ab5242a0ddd67960802bf, type: 3}
+    - {fileID: 2704916803308343865, guid: fecdf261cf0ab5242a0ddd67960802bf, type: 3}
+    - {fileID: 2704916802901970233, guid: fecdf261cf0ab5242a0ddd67960802bf, type: 3}
+    - {fileID: 2704916803481985865, guid: fecdf261cf0ab5242a0ddd67960802bf, type: 3}
+    - {fileID: 2704916802524918872, guid: fecdf261cf0ab5242a0ddd67960802bf, type: 3}
+    - {fileID: 2704916802519003390, guid: fecdf261cf0ab5242a0ddd67960802bf, type: 3}
+    - {fileID: 2704916803123518144, guid: fecdf261cf0ab5242a0ddd67960802bf, type: 3}
+    - {fileID: 2485152926725922691, guid: fecdf261cf0ab5242a0ddd67960802bf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fecdf261cf0ab5242a0ddd67960802bf, type: 3}
 --- !u!4 &61826900 stripped
 Transform:
@@ -1002,7 +1010,10 @@ PrefabInstance:
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: StateScriptPOV, Assembly-CSharp
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2697356441010992938, guid: 68f4d65797d6a374ea0ea4213ba8db5a, type: 3}
+    - {fileID: 2697356441588350798, guid: 68f4d65797d6a374ea0ea4213ba8db5a, type: 3}
+    - {fileID: 2697356441325402011, guid: 68f4d65797d6a374ea0ea4213ba8db5a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 68f4d65797d6a374ea0ea4213ba8db5a, type: 3}
 --- !u!1 &796081847
 GameObject:
@@ -1753,7 +1764,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6057280598192218689, guid: a9c94fb56b173e743ab0c88f55c85b61, type: 3}
+    - {fileID: 2626013697185410493, guid: a9c94fb56b173e743ab0c88f55c85b61, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a9c94fb56b173e743ab0c88f55c85b61, type: 3}
 --- !u!1001 &2078892359
 PrefabInstance:
@@ -1929,6 +1942,7 @@ GameObject:
   - component: {fileID: 2117076194}
   - component: {fileID: 2117076199}
   - component: {fileID: 2117076198}
+  - component: {fileID: 2117076197}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2001,6 +2015,29 @@ Transform:
   m_Father: {fileID: 1027240144}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2117076197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117076193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf98dd1206224111a38765365e98e207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockCursorWhenFocusLocked: 1
+  setCursorInvisibleWhenFocusLocked: 0
+  maxGazeCollisionDistance: 10
+  raycastLayerMasks:
+  - serializedVersion: 2
+    m_Bits: 4294967291
+  stabilizer:
+    storedStabilitySamples: 60
+  gazeTransform: {fileID: 0}
+  minHeadVelocityThreshold: 0.5
+  maxHeadVelocityThreshold: 2
 --- !u!114 &2117076198
 MonoBehaviour:
   m_ObjectHideFlags: 0
