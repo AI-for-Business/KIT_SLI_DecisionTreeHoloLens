@@ -49,7 +49,7 @@ public class StateScriptPOV : MonoBehaviour
     private int audio_nr = 0;
 
     //Message for the information panel about decision tree terminology
-    private string message = "- Root" + "\n\n" + "- Inner Node" + "\n\n" + "- Leave" + "\n\n" + "- Attribute" + "\n\n" + "\n" + "Use: automization of complex, but systematic decisions." + "\n\n" + "Open the Hint to read the explanantion.";
+    private string messageTerminology = "- Root" + "\n\n" + "- Inner Node" + "\n\n" + "- Leave" + "\n\n" + "- Attribute" + "\n\n" + "\n" + "Use: automization of complex, but systematic decisions." + "\n\n" + "Open the Hint to read the explanantion.";
 
 
 
@@ -151,7 +151,11 @@ public class StateScriptPOV : MonoBehaviour
     { 
         
         textAndHints.GetComponent<TextAndHintsPOV>().informationPanelPrefab.GetComponent<SolverHandler>().AdditionalOffset = new Vector3(-0.4f, -0.3f, 0);
-        Dialog.Open(textAndHints.GetComponent<TextAndHintsPOV>().informationPanelPrefab, DialogButtonType.None, "Terminology     ", message, false); ;
+        Dialog dialog = Dialog.Open(textAndHints.GetComponent<TextAndHintsPOV>().informationPanelPrefab, DialogButtonType.None, "Terminology", messageTerminology, false);
+        GameObject backPlateEntropy = dialog.transform.Find("ContentBackPlate").gameObject;
+        backPlateEntropy.AddComponent<EyeTrackingDataLogger>();
+        EyeTrackingDataLogger logger = backPlateEntropy.GetComponent<EyeTrackingDataLogger>();
+        logger.SetExtraInformation("Terminology M1");
 
     }
 

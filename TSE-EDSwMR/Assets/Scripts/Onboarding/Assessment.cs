@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+[System.Obsolete("used in deprecated onboarding")]
+
 public class Assessment : MonoBehaviour
 {
     public static readonly int AMOUNT_QUESTIONS = 4;

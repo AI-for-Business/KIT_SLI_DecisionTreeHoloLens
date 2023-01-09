@@ -38,7 +38,6 @@ public class AudioHandlerScript : MonoBehaviour
     /// <param name="arrayIndex"> Index of the clip in the Audio Clip Array </param>
     public void PlayAudioClipNr(int arrayIndex)
     {
-        Debug.Log("AudioHandler, PlayAudioClipNr: " + arrayIndex);
         if (arrayIndex < audioClipArray.Length)
         {
             AudioClip clip = audioClipArray[arrayIndex];

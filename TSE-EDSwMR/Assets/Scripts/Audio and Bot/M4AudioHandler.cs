@@ -11,30 +11,47 @@ public class M4AudioHandler : MonoBehaviour
 
     public void Start()
     {
-     
-        botAndAudioScript = GetComponent<BotAndAudioScript>();
+        Debug.Log("start m4audio handler");
+        if (botAndAudioScript == null) botAndAudioScript = GetComponent<BotAndAudioScript>();
     }
 
     public void ExplainEntropy()
     {
         if (botAndAudioScript != null) StartCoroutine(botAndAudioScript.PlayClipCoroutine(0));
 
-        Debug.Log("M4 Explain Entropy audio", this);
     }
         
     public void ExplainIG()
     {
         if (botAndAudioScript != null) StartCoroutine(botAndAudioScript.PlayClipCoroutine(1));
 
-        Debug.Log("M4 Explain Information Gain", this);
     }
 
     public void ExplainID3()
     {
         if (botAndAudioScript != null) StartCoroutine(botAndAudioScript.PlayClipCoroutine(2));
 
-        Debug.Log("M4 Explain ID 3 play", this);
     }
 
+    public void Intro_M4Light()
+    {
+        Debug.Log("m4 audio handler intro; botAndAudioScript: " + (botAndAudioScript == null));
+      
+        if (botAndAudioScript != null) StartCoroutine(botAndAudioScript.PlayClipCoroutine(3));
+
+    }
+
+
+    public void PlaceFrame_M4Light()
+    {
+        if (botAndAudioScript != null) StartCoroutine(botAndAudioScript.PlayClipCoroutine(4));
+
+    }
+
+    public void ExplanationTree_M4Light()
+    {
+        if (botAndAudioScript != null) StartCoroutine(botAndAudioScript.PlayClipCoroutine(5));
+
+    }
 
 }

@@ -1,0 +1,32 @@
+M2  Intro Alice, then placing. Short pause to place the tennis balls then play explanantion before m4 entropy  explanationo
+
+
+
+M2 Intro:
+Hi, I am Alice. Kai and I do play tennis on a regular basis. But sometimes he just doesn’t show up. I don’t know when he is letting me down, but I suspect a correlation with the weather. So for the last weeks, I tracked the weather and if he joined me or not.  
+Could you help me built a decision tree from that Data ? 
+
+In order to do that please position the Frame on the top left corner of the table in front of you. You can use the replace button on your hand menu to reposition the decision tree on the table. 
+You are going to need the tennis balls from the box too. Please position them inside
+
+m2 Root modified, without last sentence:
+Each of those tennis balls represents one day and on it, you see the weather data I collected. 
+We know about the outlook, wind, humidity and temperature. The yellow balls represent days Kai appeared and the red balls represent the days he didn’t. 
+Each frame you see represents a node in the decision tree.  
+When building a decision tree the goal is, to get pure leave nodes, meaning there is only red or only yellow balls in one leave.  
+
+
+
+Look, at the root node of our tree, The tennisballs are in complete chaos, and you don't know anything to categorize them correctly yet.
+(In contrast, the *leaves in earlier modules* were perfectly ordered.) To measure this chaos we introduce entropy.
+The higher the entropy of a dataset, the more uncertainty is in it.
+
+Information Gain:
+What do we learn from that? We realize that our goal is, to minimize Entropy as fast as possible, to get an optimized decision tree. 
+To measure which filter gives us the best possible improvement on entropy, we introduce Information Gain.  
+(From now), building the tree, always choose the category, with the highest information gain, and you will end at an optimal decision tree.
+We can implement, that behaviour in an algorithm, so the computer always returns the optimal decision tree.
+First, you calculate the entropy, and Information Gain, for each category.
+Secondly, you choose the category for the separation by the greatest Information Gain. 
+Then, you repeat step 1 and 2, until every node has entropy zero. This is called ID3 Algorithm.
+It's a very basic algorithm to build a decision tree.

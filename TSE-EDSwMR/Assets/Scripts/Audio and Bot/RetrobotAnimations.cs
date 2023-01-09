@@ -23,7 +23,6 @@ public class RetrobotAnimations : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("RetroBot animations Start()");
         InitiateController();
     }
 
@@ -51,7 +50,6 @@ public class RetrobotAnimations : MonoBehaviour
     }
     public IEnumerator TalkAndPresentLeftCoroutine(float seconds)
     {
-        Debug.Log("Talk and present left Corutine Retrobot animations");
         StartTalking();
         yield return new WaitForSeconds(seconds);
         PresentLeftAnimation();
@@ -65,9 +63,7 @@ public class RetrobotAnimations : MonoBehaviour
     }
 
     public void PresentLeftAnimation()
-    {
-        Debug.Log("PresentLeftAnimation");
-
+    {   
         controllerRetrobot.DoAction("Do_Present_Left");
     }
 

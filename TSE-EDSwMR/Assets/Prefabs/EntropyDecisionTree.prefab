@@ -75,12 +75,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea12a75303dcb240a10d686be76e961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightVersion: 0
   data: {fileID: 0}
-  button_prefab: {fileID: 2161814823950967579, guid: 6fe8c2e2d3e431a499e443b27190bfc3, type: 3}
   info_box: {fileID: 3736739776393015688, guid: ce0b1782c067579419ec197f2084eb20, type: 3}
+  Explaning: {fileID: 0}
+  button_prefab: {fileID: 2161814823950967579, guid: 6fe8c2e2d3e431a499e443b27190bfc3, type: 3}
   frame_prefab: {fileID: 2782996915518340344, guid: ce38c17159591b54b8966c9bc9aca124, type: 3}
   continue_button_prefab: {fileID: 264777408693762340, guid: 3f094d8ecd5063642b5ea0010fcb6de1, type: 3}
   move: 0
   hint_prefab: {fileID: 8451469530216736246, guid: 478732197b53dee4694480aac1a7c98c, type: 3}
   rebuild_prefab: {fileID: 2161814823950967579, guid: da123e9a88e1d794da6ab45f69b00199, type: 3}
   small_dialog_prefab: {fileID: 2680377478557818543, guid: 8e686c90124b8e14cbf8093893109e9a, type: 3}
+  large_dialog_prefab: {fileID: 0}
+  IG_Dialog_Prefab: {fileID: 0}
+  Entropy_Dialog_Prefab: {fileID: 0}

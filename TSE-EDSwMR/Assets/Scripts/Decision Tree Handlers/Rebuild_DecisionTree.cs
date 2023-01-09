@@ -1,4 +1,5 @@
 using Microsoft.MixedReality.Toolkit.UI;
+using Microsoft.MixedReality.Toolkit.Utilities.Solvers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,10 +22,11 @@ public class Rebuild_DecisionTree : DecisionTreeHandler
     public GameObject IG_Dialog_Prefab;
     public GameObject Entropy_Dialog_Prefab;
     private GameObject rebuild_button;
+    private GameObject root;
     bool isEntropyTree = false;
 
     private M3AudioHandler m3AudioHandler;
-    private M4AudioHandler m4AudioHandler;
+    protected M4AudioHandler m4AudioHandler;
     private bool firstlayer = true;
     private bool m3SumUpPlayed = false;
 
@@ -55,7 +57,12 @@ public class Rebuild_DecisionTree : DecisionTreeHandler
     /// </summary>
     public override void OnDataHandlerInit()
     {
-        GameObject root = Instantiate(frame_prefab, gameObject.transform);
+        //if (lightVersion && isEntropyTree)
+        //{
+        //    Debug.Log("is light and entropy");
+        //    StartCoroutine(LightVersion());
+        //}
+        root = Instantiate(frame_prefab, gameObject.transform);
         Rebuild_Layer layerZero = new Rebuild_Layer(0, DataHandler.data.Count, null, this);
         FrameHandler roothandler = root.GetComponent<FrameHandler>();
 
@@ -74,7 +81,7 @@ public class Rebuild_DecisionTree : DecisionTreeHandler
         rebuild_button.transform.localScale *=  1f / transform.parent.localScale.x;
         rebuild_button.transform.GetChild(2).transform.GetChild(0).transform.GetComponent<TMPro.TextMeshPro>().text = "Rebuild Layer";
         rebuild_button.SetActive(false);
-
+        rebuild_button.transform.GetComponent<ButtonConfigHelper>().OnClick.AddListener(() => UtilityLogData.WriteLog(UtilityLogData.MESSAGE_LOG_REBUILT_LAYER, true));
 
         place_button_pressed = EnableFollowing();
         place_button_pressed.AddListener(Dissable_Following);
@@ -90,7 +97,19 @@ public class Rebuild_DecisionTree : DecisionTreeHandler
         else
         {
             m4AudioHandler = Explaning.GetComponent<M4AudioHandler>();
-            place_button_pressed.AddListener(ExplainEntropy);
+            if (lightVersion)
+            {
+                place_button.SetActive(false);
+                root.SetActive(false);
+                StartCoroutine(LightVersion());
+
+                place_button_pressed.AddListener(DialogPutObjectsInFrame);
+            }
+            else
+            {
+                place_button_pressed.AddListener(ExplainEntropy);
+
+            }
         }
     }
 
@@ -157,7 +176,11 @@ public class Rebuild_DecisionTree : DecisionTreeHandler
                  "The Tennisballs on the table are used to represent the datapoints you collected. The frames are the nodes of the decision tree.They are color coded so you know the parent of each node. \n" +
                  "Use the buttons to choose a category to sort the datapoints. Your goal is to have only yes or no days (yellow or red tennisballs) in each node.";
 
-        Dialog.Open(hint_prefab, DialogButtonType.OK, "Hint", message, true);
+        Dialog hint = Dialog.Open(hint_prefab, DialogButtonType.OK, "Hint", message, true);
+        GameObject backPlateEntropy = hint.transform.Find("ContentBackPlate").gameObject;
+        backPlateEntropy.AddComponent<EyeTrackingDataLogger>();
+        EyeTrackingDataLogger logger = backPlateEntropy.GetComponent<EyeTrackingDataLogger>();
+        logger.SetExtraInformation("Hint M4: " + message);
     }
 
     /// <summary>
@@ -168,7 +191,8 @@ public class Rebuild_DecisionTree : DecisionTreeHandler
     /// <param name="res"></param>
     private void LoadMenu(DialogResult res)
     {
-        SceneManager.LoadScene("Menu");
+        // TODO change back to: Menu
+        SceneManager.LoadScene("MenuLight");
     } 
 
     /// <summary>
@@ -179,6 +203,7 @@ public class Rebuild_DecisionTree : DecisionTreeHandler
         if(isEntropyTree)
         {
             Dialog.Open(small_dialog_prefab, DialogButtonType.OK, "Finished", "Thank you for taking this course. We hope you liked it.\n Press okay to get back to the main menu.", true).OnClosed += LoadMenu;
+            UtilityLogData.WriteLog(UtilityLogData.MESSAGE_LOG_FINISH_M4, true);
         } else SceneManager.LoadScene("M4EntropyScene");
         base.ContinueButtonPressed();
     }
@@ -206,8 +231,12 @@ public class Rebuild_DecisionTree : DecisionTreeHandler
             }        
         } else
         {
-            if(s_layers.Count <= 3 || ((Layer)s_layers[3]).IsEmpty()) StartCoroutine(M4EndCoroutine());
-            else Dialog.Open(small_dialog_prefab, DialogButtonType.OK, "Not the perfect DT", "Hey, that is not the perfect tree. \nDid you always click the category with the highest information gain?\nPlease try again, by rebuilding some layers.", true );
+            if (s_layers.Count <= 3 || ((Layer)s_layers[3]).IsEmpty()) StartCoroutine(M4EndCoroutine());
+            else
+            {
+                Dialog.Open(small_dialog_prefab, DialogButtonType.OK, "Not the perfect DT", "Hey, that is not the perfect tree. \nDid you always click the category with the highest information gain?\nPlease try again, by rebuilding some layers.", true);
+                UtilityLogData.WriteLog(UtilityLogData.MESSAGE_LOG_NOT_PERFECT_TREE, false);
+            }
             return;
         }
 
@@ -234,6 +263,8 @@ public class Rebuild_DecisionTree : DecisionTreeHandler
         string message = "Entropy measures the randomness of a dataset. The higher the entropy, the more uncertainty is in it. \nLet S be the Dataset and P_yes is the proportion of Yes-Datapoints in it.\nIn our context this is the proportion of Days we go play tennis.";
         m4AudioHandler.ExplainEntropy();
         Dialog dialog = Dialog.Open(Entropy_Dialog_Prefab, DialogButtonType.OK, "Entropy", message, true);
+        GameObject backPlateEntropy = dialog.transform.Find("ContentBackPlate").gameObject;
+        backPlateEntropy.AddComponent<EyeTrackingDataLogger>();
         dialog.OnClosed += ExplainIG;
     }
 
@@ -243,6 +274,8 @@ public class Rebuild_DecisionTree : DecisionTreeHandler
             "In the follwing always choose the category with the highest Information Gain.";
         m4AudioHandler.ExplainIG();
         Dialog dialog = Dialog.Open(IG_Dialog_Prefab, DialogButtonType.OK, "Information Gain", message, true);
+        GameObject backPlateEntropy = dialog.transform.Find("ContentBackPlate").gameObject;
+        backPlateEntropy.AddComponent<EyeTrackingDataLogger>();
         dialog.OnClosed += ((Rebuild_Layer) s_layers[0]).InitialActivation;
     }
 
@@ -252,8 +285,12 @@ public class Rebuild_DecisionTree : DecisionTreeHandler
         string message = "1. You calculate the Entropy and Information Gain for each category." +
             "\n2. Choose the category for the separation by the greatest Information Gain." +
             "\nRepeat step 1 and 2 till every node has entropy zero.";
-        Dialog.Open(large_dialog_prefab, DialogButtonType.OK, "Algorithm ID3", message, true).OnClosed += M4ReallyFinished;
-        
+        Dialog dialog = Dialog.Open(large_dialog_prefab, DialogButtonType.OK, "Algorithm ID3", message, true);
+        GameObject backPlateEntropy = dialog.transform.Find("ContentBackPlate").gameObject;
+        backPlateEntropy.AddComponent<EyeTrackingDataLogger>();
+        EyeTrackingDataLogger logger = backPlateEntropy.GetComponent<EyeTrackingDataLogger>();
+        logger.SetExtraInformation("ExplainID3");
+        dialog.OnClosed += M4ReallyFinished;
     }
 
     public void M4ReallyFinished(DialogResult res)
@@ -269,6 +306,56 @@ public class Rebuild_DecisionTree : DecisionTreeHandler
 
 
 
+    public IEnumerator LightVersion()
+    {
+        // Play Intro, then position frame show info_box dialog & frame, then put balls click away dialog (position dialog somewhere not in the way), the start intro for 
+        
+        info_box.SetActive(false);
+
+        yield return new WaitForSeconds(2);
+
+        m4AudioHandler.Intro_M4Light();
+
+        yield return new WaitForSeconds(25);
+        root.SetActive(true);
+        place_button.SetActive(true);
+        info_box.SetActive(true);
+        m4AudioHandler.PlaceFrame_M4Light();
+
+
+    }
+
+    private void DialogPutObjectsInFrame()
+    {
+        // TODO: check if dialog position is okay now 
+        Dialog dialog = Dialog.Open(small_dialog_prefab, DialogButtonType.OK, "To Do", "Put all of the tennis balls in the frame, with the weather icons facing you. \n\nAfter finishing press OK.", true);
+        dialog.gameObject.GetComponent<SolverHandler>().AdditionalOffset = new Vector3(-0.4f, -0.2f, 0);
+        dialog.OnClosed += ExplainTree_LightVersion;
+
+    }
+
+    private void ExplainTree_LightVersion(DialogResult res)
+    {
+
+        string message = "Tennis ball: day, \nYellow: Kai showed up, \nRed: Kai didn't show up, \nFrame: node in decision tree, \nGoal: pure leave nodes.";
+        m4AudioHandler.ExplanationTree_M4Light();
+        // define name for large dialog here for logging?
+        Dialog dialog = Dialog.Open(large_dialog_prefab, DialogButtonType.OK, "Definitions:", message, true);
+
+        GameObject descriptionText = dialog.transform.Find("DescriptionText").gameObject;
+        descriptionText.GetComponent<TMPro.TextMeshPro>().lineSpacing = 100;
+
+        GameObject backPlateEntropy = dialog.transform.Find("ContentBackPlate").gameObject;
+        backPlateEntropy.AddComponent<EyeTrackingDataLogger>();
+        EyeTrackingDataLogger logger = backPlateEntropy.GetComponent<EyeTrackingDataLogger>();
+        logger.SetExtraInformation("Definitions of DT (M4 Light Version)");
+        dialog.OnClosed += Explanation_LightVersion;
+    }
+    private void Explanation_LightVersion(DialogResult res)
+    {
+        ExplainEntropy();
+
+    }
 
 
 }

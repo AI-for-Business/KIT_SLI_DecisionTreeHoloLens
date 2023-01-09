@@ -12,6 +12,7 @@ using Microsoft.MixedReality.Toolkit.UI;
 /// </summary>
 public class DecisionTreeHandler : MonoBehaviour
 {
+    public bool lightVersion;
     //Data 
     public DataHandler data;
     //GameObjects from the Scene relevant for the Tree

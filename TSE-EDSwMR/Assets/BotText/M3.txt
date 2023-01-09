@@ -1,0 +1,11 @@
+Let’s built a tree again, but this time think about: which of those attributes, is the most relevant for Kai to decide, whether he lets you down.  
+That’s the attribute that separates the yes and no decisions the best. We say, this attribute has the highest information gain.  
+If you built the tree now, you can try out the different attributes and go back, if you think another one would separate the data better. Try to find a tree, that comes to a conclusion using the minimal amount of nodes. 
+Please position the Frame on the top left corner of the table. Remember, you can use the replace button on your hand menu to reposition the decision tree on the table. 
+You are going to need the tennis balls too. 
+This looks way better!
+But how can you know, if it is the perfect tree ? and how does an algorithm know, which attribute has the highest information gain ?  
+To find out, continue in Module 4. 
+On which of those attributes does Kai decide whether to let you down?  
+If you look at many more days as data points, you can decide after less attributes, whether to go play tennis. For example, you will never go, if it is raining, and windy, so you already decided only knowing two attributes. That way, you can built trees with less decisions, which is more efficient.
+While building those decision trees, your goal is to reach singular leave nodes, meaning there are only yes or only no decisions in each leave.  

@@ -23,7 +23,19 @@ public class TextAndHintsPOV : MonoBehaviour
     private void Hint(string message)
     {
         hintPrefab.SetActive(true);
-        Dialog.Open(hintPrefab, DialogButtonType.OK, "Hint", message, true);
+        Dialog hint = Dialog.Open(hintPrefab, DialogButtonType.OK, "Hint", message, true);
+        GameObject backPlateEntropy = hint.transform.Find("ContentBackPlate").gameObject;
+        backPlateEntropy.AddComponent<EyeTrackingDataLogger>();
+        EyeTrackingDataLogger logger = backPlateEntropy.GetComponent<EyeTrackingDataLogger>();
+        if (message.Equals(hint_choosing_phase))
+        {
+            logger.SetExtraInformation("Hint beginning M1.");
+        }
+        else
+        {
+            logger.SetExtraInformation("Hint end M1 Explanation.");
+        }
+        
     }
 
     public void HintChoosingPhase()
