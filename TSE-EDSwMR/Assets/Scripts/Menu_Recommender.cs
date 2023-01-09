@@ -33,6 +33,5 @@ public class Menu_Recommender : MonoBehaviour
         highlightDict.Add(5, Highlight_Module5);
 
         highlightDict[recommendedModule].SetActive(true);
-      
     }
 }

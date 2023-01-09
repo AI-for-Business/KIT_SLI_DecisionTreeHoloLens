@@ -23,6 +23,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/POV.unity
     guid: bef0342c53b40d74aa3e3d2b90db0842
+  - enabled: 1
+    path: Assets/Scenes/LightVersion/OnboardingLight.unity
+    guid: 06d89a34408069740a3cce2754d1940d
+  - enabled: 1
+    path: Assets/Scenes/LightVersion/MenuLight.unity
+    guid: 7b3041f6be1e8a941b9dbb044d901a92
+  - enabled: 1
+    path: Assets/Scenes/LightVersion/M4Light.unity
+    guid: fb709eec0320a0647acd2d7e710b4653
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 07b71980238f30c4e904d1f0aee2455a, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: e477a2dedd853af4c8b3f60c8a6ca7a9, type: 2}

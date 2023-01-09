@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Microsoft.MixedReality.Toolkit.UI;
-
+using System.Diagnostics.Tracing;
 
 public class OnboardingIntro : MonoBehaviour
 {
+    [SerializeField] bool jumpAssessment;
     [SerializeField] TextMeshPro questionText;
     [SerializeField] GameObject backPlate;
     [SerializeField] GameObject startButton;
@@ -28,8 +29,7 @@ public class OnboardingIntro : MonoBehaviour
     private const string REQUEST_TEXT = "To be able to start, we first need all the tools. \nTo start, please take the box labeled 'MR: Decision Tree' from the shelf and place it on the table. \n\nAre you ready?";
     private bool destroyed = false;
 
-    //TO-DO public in Ser.Field.
-    public bool[] answers = new bool[AMOUNT_QUESTIONS];
+    private bool[] answers = new bool[AMOUNT_QUESTIONS];
 
     private RetrobotAnimations kaiAnimations;
 
@@ -37,6 +37,8 @@ public class OnboardingIntro : MonoBehaviour
     private bool assessmentDone;
     private bool yesPressed;
     private bool buttonPressed;
+    private bool firstNo = true;
+
 
     private static readonly int AMOUNT_QUESTIONS = 4;
     private int index_question = AMOUNT_QUESTIONS;
@@ -52,6 +54,8 @@ public class OnboardingIntro : MonoBehaviour
     /// </summary>
     void Start()
     {
+        //LogEventSource.Log.LoadSceneLog("Onboarding");
+        UtilityLogData.WriteLog(UtilityLogData.MESSAGE_LOG_START_APP, true);
         kaiAnimations = kai.GetComponent<RetrobotAnimations>();
         kaiAnimations.InitiateController();
         index_question = 0;
@@ -74,6 +78,7 @@ public class OnboardingIntro : MonoBehaviour
         /// Starts Assessment segment
         else if (assessmentDone)
         {
+            Debug.Log("update assessment done");
             Destroy(startButton);
             if (!destroyed)
             {
@@ -88,17 +93,21 @@ public class OnboardingIntro : MonoBehaviour
                 if (buttonPressed)
                 {
                     ReadDialog();
-
                     if (yesPressed)
                     {
                         answers[index_question] = true;
-
 
                     }
                     else
                     {
                         answers[index_question] = false;
+                        if (firstNo)
+                        {
+                            //recommend the first module for which the person says no.
 
+                            Menu_Recommender.recommendedModule = index_question + 1;
+                            firstNo = false;
+                        }
                     }
                     SetButtonPressed(false);
                     index_question++;
@@ -118,7 +127,10 @@ public class OnboardingIntro : MonoBehaviour
     /// </summary>
     private void StartConfiguration()
     {
-
+        if (jumpAssessment)
+        {
+            SetAssessmentDone(true);
+        }
         SetButtonPressed(false);
         SetIntro(false);
         SetAssessmentDone(false);
@@ -197,6 +209,7 @@ public class OnboardingIntro : MonoBehaviour
     {
         bot.PlayClip(audio_nr);
         audio_nr++;
+        Debug.Log(audio_nr + " audio nr"); 
     }
 
     /// <summary>
@@ -209,9 +222,19 @@ public class OnboardingIntro : MonoBehaviour
         float clip_length = audioHandler.DurationAudio(audio_nr);
         kaiAnimations.WaveHand();
         ReadDialog();
+        Debug.Log("Read dialog in start intro");
         SetIntro(true);
         yield return new WaitForSeconds(clip_length);
-        StartCoroutine(StartAssessment());
+        if (jumpAssessment)
+        {
+            StartCoroutine(DestroyAssessment());
+            audio_nr = 8;
+            //ShowRequestDialog();
+        }
+        else
+        {
+            StartCoroutine(StartAssessment());
+        }
     }
 
     /// <summary>
@@ -234,6 +257,7 @@ public class OnboardingIntro : MonoBehaviour
     /// <returns></returns>
     IEnumerator DestroyAssessment()
     {
+        LogEventSource.Log.AssessmentResultLog(string.Join(",", answers));
         destroyed = true;
 
         questionText.text = FINAL_MESSAGE_ASSESSMENT;

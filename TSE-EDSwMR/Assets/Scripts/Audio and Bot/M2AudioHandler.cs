@@ -13,8 +13,6 @@ public class M2AudioHandler : MonoBehaviour
     public void PlayIntroduction()
     {
         if (botAndAudioScript != null) StartCoroutine(botAndAudioScript.PlayClipCoroutine(0));
-
-        Debug.Log("M2PlayIntroduction", this);
     }
 
     public void PlayRootExplanation()
