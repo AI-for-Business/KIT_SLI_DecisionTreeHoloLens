@@ -5,7 +5,7 @@ This repository contains a program called 'Decision Tree HoloLens', which allows
 You can use this software to learn the basic concept of decision tree and ID3 algorithm. The system has four modules, introucing different aspects of the ID3 algorithm in an exploratory approach.
 
 # What do I need in order to use it?
-You need to have the MRTK development environment set up to use it. More information can be found in the documentation of MRTK: [here](https://learn.microsoft.com/de-de/windows/mixed-reality/mrtk-unity/mrtk2)
+You need to have the MRTK development environment set up to use it. More information can be found in the documentation of MRTK: [MRTK Setup](https://learn.microsoft.com/de-de/windows/mixed-reality/mrtk-unity/mrtk2)
 Moreover, you need to have 20 physical objects with (ideally tennis balls) to represent data points.
 
 # Copyright / License
