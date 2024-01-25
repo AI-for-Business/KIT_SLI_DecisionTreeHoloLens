@@ -1,124 +1,40 @@
-# Educating Data Science with MR: Developing an Exploratory Learning System
-Developing a learning experience for basic data science concepts for Hololens 2 in Unity. 
-This project is supposed to explore the possibilities in a MR learning and how it can be used to transfer content to learners on different levels.
+# What is this repository?
+This repository contains a program called 'Decision Tree HoloLens', which allows interactive learning with Microsoft HoloLens with the topic of ID3 algorithm for decision tree. It is written in C# language and published under a Creative Commons license. You need to have MRTK 2.7 or above with a compatible Unity version to compile it and deploy it on HoloLens 2.
 
-To get this project up and running on your machine follow these steps:
-1. clone the project to your directory 
-2. Open the folder TSE-EDSwMR from Unity Hub with the matching unity editor version (2020.3.34f1)
-3. Importing will take some time...
-4. use branches and commit messages to keep the repo neat
+# What can I use it for?
+You can use this software to learn the basic concept of decision tree and ID3 algorithm. The system has four modules, introucing different aspects of the ID3 algorithm in an exploratory approach.
 
+# What do I need in order to use it?
+You need to have the MRTK development environment set up to use it. More information can be found in the documentation of MRTK: [here](https://learn.microsoft.com/de-de/windows/mixed-reality/mrtk-unity/mrtk2)
+Moreover, you need to have 20 physical objects with (ideally tennis balls) to represent data points.
 
-Default ReadMe of KIT GitLab:
+# Copyright / License
+This work is licensed under a Creative Commons Attribution 4.0 International License (CC BY-NC-SA 4.0).
 
-Teamprojekt_MR Machine Learning
+![](CC-BY-NC-SA.jpg)
+ 
+As such:
 
-Getting started
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? Use the template at the bottom!
+### You are free to:
+* Share — copy and redistribute the material in any medium or format
+* Adapt — remix, transform, and build upon the material
+* The licensor cannot revoke these freedoms as long as you follow the license terms.
 
-Add your files
-
-
- Create or upload files
-
- Add files using the command line or push an existing Git repository with the following command:
-
-
-cd existing_repo
-git remote add origin https://git.scc.kit.edu/lz5564/teamprojekt_mr-machine-learning.git
-git branch -M main
-git push -uf origin main
+### Under the following terms:
+* Attribution — You must give appropriate credit , provide a link to the license, and indicate if changes were made . You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+* NonCommercial — You may not use the material for commercial purposes .
+* ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
 
 
+# Authors, Citation
 
-Integrate with your tools
+# DOI - Code
 
+# Contact / About us
+* You can find all of our repositories [here](https://github.com/orgs/AI-for-Business/repositories).
+* You can find the homepage of the project ABBA: **A**I for **B**usiness | **B**usiness for **A**I
+[here](https://abba-project.de/).
+* You can contact the authors by sending us an [email](mailto:shi.liu@kit.edu).
 
- Set up project integrations
-
-
-
-Collaborate with your team
-
-
- Invite team members and collaborators
-
-
- Create a new merge request
-
-
- Automatically close issues from merge requests
-
-
- Enable merge request approvals
-
-
- Automatically merge when pipeline succeeds
-
-
-
-Test and Deploy
-Use the built-in continuous integration in GitLab.
-
-
- Get started with GitLab CI/CD
-
-
- Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)
-
-
- Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy
-
-
- Use pull-based deployments for improved Kubernetes management
-
-
- Set up protected environments
-
-
-
-
-Editing this README
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to makeareadme.com for this template.
-
-Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-Name
-Choose a self-explaining name for your project.
-
-Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-License
-For open source projects, say how it is licensed.
-
-Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+# Author's note:
+You don't need to have physical objects to use the HoloLens application, as the system does not recognize the physical objects. They are included in the instructions for reference purpose.
