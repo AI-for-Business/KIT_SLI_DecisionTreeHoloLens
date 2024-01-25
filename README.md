@@ -37,4 +37,6 @@ As such:
 * You can contact the authors by sending us an [email](mailto:shi.liu@kit.edu).
 
 # Author's note:
-You don't need to have physical objects to use the HoloLens application, as the system does not recognize the physical objects. They are included in the instructions for reference purpose.
+You don't need to have physical objects to use the HoloLens application, as the system does not recognize the physical objects. They are included in the instructions for reference purposes.
+
+We have a paper that evaluates this application together with another [Mobile AR](https://github.com/AI-for-Business/KIT_TSC_MobileAR) learning application in a field study, check out [the paper](https://dl.acm.org/doi/fullHtml/10.1145/3603555.3608564) if you are interested.
