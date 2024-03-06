@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="D1" size="0.040000 0.040321" />
+    <ImageTarget name="D14" size="0.040000 0.040321" />
+    <ImageTarget name="D13" size="0.040000 0.040321" />
+    <ImageTarget name="D12" size="0.040000 0.040321" />
+    <ImageTarget name="D11" size="0.040000 0.040321" />
+    <ImageTarget name="D10" size="0.040000 0.040321" />
+    <ImageTarget name="D9" size="0.040000 0.040321" />
+    <ImageTarget name="D8" size="0.040000 0.040321" />
+    <ImageTarget name="D7" size="0.040000 0.040321" />
+    <ImageTarget name="D6" size="0.040000 0.040321" />
+    <ImageTarget name="D5" size="0.040000 0.040321" />
+    <ImageTarget name="D4" size="0.040000 0.040321" />
+    <ImageTarget name="D3" size="0.040000 0.040321" />
+    <ImageTarget name="D2" size="0.040000 0.040321" />
+  </Tracking>
+</QCARConfig>
