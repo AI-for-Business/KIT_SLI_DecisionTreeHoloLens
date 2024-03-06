@@ -6,7 +6,7 @@ You can use this software to learn the basic concept of decision tree and ID3 al
 
 # What do I need in order to use it?
 You need to have the MRTK development environment set up to use it. More information can be found in the documentation of MRTK: [MRTK Setup](https://learn.microsoft.com/de-de/windows/mixed-reality/mrtk-unity/mrtk2)
-Moreover, you need to have 20 physical objects with (ideally tennis balls) to represent data points.
+Moreover, you need to have 20 physical objects (ideally tennis balls) to represent data points.
 
 # Copyright / License
 This work is licensed under a Creative Commons Attribution 4.0 International License (CC BY-NC-SA 4.0).
@@ -21,13 +21,13 @@ As such:
 * The licensor cannot revoke these freedoms as long as you follow the license terms.
 
 ### Under the following terms:
-* Attribution — You must give appropriate credit , provide a link to the license, and indicate if changes were made . You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-* NonCommercial — You may not use the material for commercial purposes .
+* Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+* NonCommercial — You may not use the material for commercial purposes.
 * ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
 
 
 # Authors, Citation
-
+Shi Liu {0000-0002-5714-3331}, Karlsruhe Institute of Technology, Germany
 # DOI - Code
 
 # Contact / About us
