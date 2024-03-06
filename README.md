@@ -28,6 +28,10 @@ As such:
 
 # Authors, Citation
 Shi Liu {0000-0002-5714-3331}, Karlsruhe Institute of Technology, Germany
+
+Cite as:
+_MR Decision Tree HoloLens by Shi Liu, licensed under CC-BY-NC-SA, via https://github.com/AI-for-Business/KIT_SLI_DecisionTreeHoloLens_
+
 # DOI - Code
 
 # Contact / About us
