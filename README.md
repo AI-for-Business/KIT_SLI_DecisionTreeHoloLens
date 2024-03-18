@@ -34,6 +34,7 @@ Cite as:
 _MR Decision Tree HoloLens by Shi Liu, licensed under CC-BY-NC-SA, via https://github.com/AI-for-Business/KIT_SLI_DecisionTreeHoloLens_
 
 # DOI - Code
+[![DOI](https://zenodo.org/badge/602155842.svg)](https://zenodo.org/doi/10.5281/zenodo.10836064)
 
 # Contact / About us
 * You can find all of our repositories [here](https://github.com/orgs/AI-for-Business/repositories).
